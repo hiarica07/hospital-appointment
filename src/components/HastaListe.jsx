@@ -15,10 +15,11 @@ const deleteHasta = (id) =>{
         <div key={osman.id} className={osman.bittiMi ? "bitti" : "devam"} onDoubleClick={()=> setVeri(veri.map((x)=> x.id === osman.id ? {...x, bittiMi: !x.bittiMi  } : x))} >
             <h3>{osman.text}
             
-            <MdDeleteForever onClick={()=>deleteHasta(osman.id)}/>
+            <MdDeleteForever style={{color : "red", fontSize:"25px"}} onClick={()=>deleteHasta(osman.id)}/>
             
             </h3>
-            <h6>{osman.day}</h6>
+            <h6>{osman.day}
+            </h6>
             <h4>{osman.doktor}</h4>
         </div>
     ))}

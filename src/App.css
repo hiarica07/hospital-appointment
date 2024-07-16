@@ -17,6 +17,7 @@ h1{
 
 .doctors img{
     width: 200px;
+    height: 200px;
 }
 
 .photos{
@@ -25,7 +26,7 @@ h1{
     justify-content: center;
 }
 
-.doctors p{
+.doctors{
     text-align: center;
 }
 
@@ -35,14 +36,24 @@ h3{
 }
 
 .hastalistesi{
-    margin-top: 20px;
-    /* border: 2px solid red; */
+    margin: 50px 20px;
+    border: 2px solid red;
 }
 
 .bitti{
+border: 2px solid grey;
+background-color: wheat;
+cursor: pointer;   
 text-decoration: line-through;
+padding: 10px 20px;
+margin: 5px;
 }
 
 .devam{
+border: 2px solid grey;  
+background-color: lightgreen;
 text-decoration: none;
+padding: 10px 20px;
+margin: 5px;
+cursor: pointer; 
 }

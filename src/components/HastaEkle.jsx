@@ -1,41 +1,67 @@
-import React from 'react'
-import ahmet from "../helper/ahmet.png"
-import ayse from "../helper/Ayse.png"
-import fatma from "../helper/Fatma.png"
-import oya from "../helper/Oya.png"
+// import React, { useState } from "react";
+import { doctorData } from "../helper/data";
 
-const HastaEkle = ({veri,setVeri}) => {
-  return (
-    <div>
+import { useState } from "react";
 
-    <h1>KLINIKUM ASHLEY</h1>
+const HastaEkle = ({veri,setVeri,doctorResim ,setDoctorResim }) => {
 
-    <div className="photos">
+  const [showForm, setShowForm] = useState(false)
+  const [choosen, setChoosen] = useState("")
 
-    <div className="doctors" >
-        <img src={ahmet} alt=""/>
-        <p>DR Ahmet Bilen</p>
-    </div>
-    <div className="doctors">
-        <img src={ayse} alt=""/>
-        <p>DR Ayse Okur</p>
-    </div>
-    <div className="doctors">
-        <img src={fatma} alt=""/>
-        <p>DR Fatma Adil</p>
-    </div>
-    <div className="doctors">
-        <img src={oya} alt=""/>
-        <p>DR Oya Başar</p>
-    </div>
+  const doctorInfo = (doc) => {
+
+    setDoctorResim(doctorResim.filter((x)=> x.id === doc.id))
+    setVeri(veri.filter((x)=> x.doktor === doc.doctorName))
+    setShowForm(!showForm)
+    setChoosen(doc)
+    
     
 
+  };
 
+  
+  const submitted = (e) => {
+    e.preventDefault()
+    setVeri([])
+  }
 
+  return (
+    <div>
+      <h1>KLINIKUM ASHLEY</h1>
+
+      <div className="photos">
+        {doctorResim.map((doc)=> (
+          <div className="doctors" key={doc.id} onClick={()=>doctorInfo(doc)}>
+            <img src={doc.doctorImg} alt="" />
+            <h4>{doc.doctorName}</h4>
+           
+          </div>
+        ))}
+        <div>{showForm && <form onChange={submitted}>
+        <div className="formControl">
+            <label htmlFor="text">Task</label>
+            <input
+              
+              type="text"
+              id="text"
+              
+            />
+          </div>
+          <div className="formControl">
+            <label htmlFor="day">Day & Time</label>
+            <input
+            
+              type="dateTime-local"
+              id="day"
+              
+            />
+          </div>
+          <button type="submit" className="btn btn-submit">
+            {choosen.doctorName} ICIN KAYIT OLUSTUR
+          </button></form> }</div>
+      </div>
     </div>
+  );
+};
 
-    </div>
-  )
-}
-
-export default HastaEkle
+export default HastaEkle;

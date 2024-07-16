@@ -8,7 +8,7 @@ const HastaEkle = ({veri,setVeri}) => {
   return (
     <div>
 
-    <h1>ASHLEYS KLINIKUM</h1>
+    <h1>KLINIKUM ASHLEY</h1>
 
     <div className="photos">
 

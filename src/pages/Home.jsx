@@ -10,7 +10,7 @@ const Home = () => {
     const [veri,setVeri] = useState(data)
 
   return (
-    <div>
+    <div className="container">
         <HastaEkle veri={veri} setVeri={setVeri} />
         <HastaListe veri={veri} setVeri={setVeri} />
     </div>

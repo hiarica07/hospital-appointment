@@ -1,0 +1,28 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+h1{
+    text-align: center;
+    margin: 20px;
+}
+
+.container{
+    padding: 2rem;
+    margin: 3rem auto;
+}
+
+.doctors img{
+    width: 200px;
+}
+
+.photos{
+    display: flex;
+    gap: 20px;
+}
+
+.doctors p{
+    text-align: center;
+}

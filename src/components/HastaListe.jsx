@@ -1,36 +1,47 @@
-import React from 'react'
-import { MdDeleteForever } from "react-icons/md";
+import React from "react";
+import { FaTimesCircle } from "react-icons/fa";
+const HastaListe = ({ hastalar, setHastalar, doktorlar }) => {
+  
+  // (doktorlar.length ===1) ? (setHastalar(hastalar.filter((a)=> a.myDoctor===doktorlar[0].doctorName))): hastalar
 
-const HastaListe = ({veri,setVeri}) => {
+  const deleteHasta = (id) =>{
 
-const deleteHasta = (id) =>{
-    setVeri(veri.filter((osmancik)=> osmancik.id !== id))
-}
+    setHastalar(hastalar.filter((x)=> x.id !== id  ))
 
+  }
 
   return (
-    <div className="hastalistesi">
-   
-    {veri.map((osman)=>(
-        <div key={osman.id} className={osman.bittiMi ? "bitti" : "devam"} onDoubleClick={()=> setVeri(veri.map((x)=> x.id === osman.id ? {...x, bittiMi: !x.bittiMi  } : x))} >
-            <h3>{osman.text}
-            
-            <MdDeleteForever style={{color : "red", fontSize:"25px"}} onClick={()=>deleteHasta(osman.id)}/>
-            
-            </h3>
-            <h6>{osman.day}
-            </h6>
-            <h4>{osman.doktor}</h4>
+    <div>
+      {hastalar.map((hasta) => (
+        <div key={hasta.id}>
+          {doktorlar.map(
+            (a) =>
+              a.doctorName === hasta.myDoctor && (
+                <div
+                  className={hasta.isDone ? "trueStil" : "falseStyle"}
+                  onDoubleClick={() =>
+                    setHastalar(
+                      hastalar.map((a) =>
+                        a.id === hasta.id ? { ...a, isDone: !a.isDone } : a
+                      )
+                    )
+                  }
+                >
+                <div>
+                    <h2>{hasta.text} </h2>
+                    <h4>{hasta.day}</h4>
+                    <h3>{hasta.myDoctor}</h3>
+                  </div>
+                  <div>
+                    <FaTimesCircle style={{ color: "red" }} onClick={()=>deleteHasta(hasta.id)}/>
+                  </div>
+                </div>
+              )
+          )}
         </div>
-    ))}
-    
-    
-    
-    
-    
-    
+      ))}
     </div>
-  )
-}
+  );
+};
 
-export default HastaListe
+export default HastaListe;
